@@ -1,0 +1,473 @@
+/* Terminal Portfolio CSS - Exact Match */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+  background-color: #0a0a0a;
+  color: #00ff00;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+/* Main Container */
+.terminal-container {
+  min-height: 100vh;
+  display: flex;
+  background-color: #0a0a0a;
+}
+
+/* Left Profile Section */
+.profile-section {
+  width: 400px;
+  background-color: #0a0a0a;
+  border-right: 1px solid #00ff00;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Profile Header */
+.profile-header {
+  margin-bottom: 40px;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ff00;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.profile-subtitle {
+  color: #888888;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Profile Image Container */
+.profile-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.profile-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+}
+
+.profile-image-frame {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #333333;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.profile-username {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: #00ff00;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.profile-card-label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0a0a0a;
+  border: 1px solid #00ff00;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #00ff00;
+  white-space: nowrap;
+  border-radius: 2px;
+}
+
+/* Command Menu */
+.command-menu {
+  margin-top: auto;
+}
+
+.command-menu-title {
+  color: #00ff00;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.command-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.command-tag {
+  color: #00aa00;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.command-tag:hover {
+  color: #00ff00;
+}
+
+.command-separator {
+  color: #004400;
+  margin: 0 4px;
+  user-select: none;
+}
+
+/* Right Terminal Section */
+.terminal-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0a0a0a;
+}
+
+/* Terminal Header */
+.terminal-header {
+  border-bottom: 1px solid #00ff00;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0a0a;
+}
+
+.terminal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-icon {
+  width: 16px;
+  height: 16px;
+  color: #00ff00;
+}
+
+.terminal-title {
+  color: #00ff00;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.terminal-time {
+  color: #00aa00;
+  font-size: 12px;
+}
+
+/* Terminal Content */
+.terminal-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #0a0a0a;
+  position: relative;
+}
+
+/* Welcome Section */
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.terminal-prompt {
+  color: #4a9eff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.welcome-text {
+  color: #00ff00;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Terminal History */
+.terminal-history {
+  margin-bottom: 20px;
+}
+
+.terminal-entry {
+  margin-bottom: 20px;
+}
+
+.terminal-output {
+  color: #00ff00;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.terminal-output-line {
+  margin-bottom: 4px;
+}
+
+/* Current Input */
+.current-input {
+  display: flex;
+  align-items: center;
+  color: #4a9eff;
+  font-size: 14px;
+}
+
+.input-prompt {
+  margin-right: 8px;
+  color: #4a9eff;
+}
+
+.input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: #00ff00;
+}
+
+.cursor {
+  background-color: #00ff00;
+  width: 8px;
+  height: 16px;
+  display: inline-block;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* Terminal Footer */
+.terminal-footer {
+  border-top: 1px solid #00ff00;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0a0a;
+}
+
+.footer-prompt {
+  color: #00aa00;
+  font-size: 12px;
+}
+
+.footer-time {
+  color: #00aa00;
+  font-size: 12px;
+}
+
+/* Scrollbar Styling */
+.terminal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 3px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+  background: #00aa00;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .terminal-container {
+    flex-direction: column;
+  }
+  
+  .profile-section {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #00ff00;
+    padding: 15px;
+    max-height: 50vh;
+  }
+  
+  .profile-card {
+    width: 250px;
+    height: 320px;
+  }
+  
+  .profile-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    padding: 10px;
+    max-height: 40vh;
+  }
+  
+  .terminal-content {
+    padding: 15px;
+  }
+  
+  .profile-card {
+    width: 200px;
+    height: 260px;
+  }
+  
+  .profile-title {
+    font-size: 18px;
+  }
+  
+  .command-tags {
+    font-size: 11px;
+  }
+  
+  .terminal-prompt,
+  .terminal-output,
+  .current-input {
+    font-size: 13px;
+  }
+}
+
+/* Selection Styles */
+::selection {
+  background: #00ff0030;
+  color: #00ff00;
+}
+
+::-moz-selection {
+  background: #00ff0030;
+  color: #00ff00;
+}
+
+/* Focus Styles */
+.input-field:focus {
+  outline: none;
+}
+
+.command-tag:focus {
+  outline: 1px solid #00ff00;
+  outline-offset: 2px;
+}
+
+/* Utility Classes */
+.text-terminal-green {
+  color: #00ff00;
+}
+
+.text-terminal-blue {
+  color: #4a9eff;
+}
+
+.text-terminal-gray {
+  color: #888888;
+}
+
+.text-terminal-dark-green {
+  color: #00aa00;
+}
+
+.bg-terminal-black {
+  background-color: #0a0a0a;
+}
+
+.border-terminal-green {
+  border-color: #00ff00;
+}
+
+/* Special styling for actual image */
+.profile-image-real {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(20%) contrast(1.1) brightness(0.9);
+}
+
+/* Profile image hover effect */
+.profile-image-frame:hover .profile-image-real {
+  filter: grayscale(0%) contrast(1.2) brightness(1);
+  transition: filter 0.3s ease;
+}
+
+/* Terminal prompt colors exact match */
+.prompt-user {
+  color: #4a9eff;
+}
+
+.prompt-path {
+  color: #4a9eff;
+}
+
+.prompt-symbol {
+  color: #4a9eff;
+}
+
+.output-text {
+  color: #00ff00;
+}
+
+/* Command list styling in header */
+.command-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.command-item {
+  color: #00aa00;
+}
+
+.command-item:hover {
+  color: #00ff00;
+  cursor: pointer;
+}
+
+.command-divider {
+  color: #004400;
+  margin: 0 2px;
+}
