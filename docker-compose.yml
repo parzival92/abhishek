@@ -1,0 +1,18 @@
+services:
+  abhishek:
+    build:
+      context: .
+    container_name: abhishek-portfolio
+    restart: unless-stopped
+    expose:
+      - "80"
+    ports:
+      - "127.0.0.1:8087:80"
+    networks:
+      edge:
+        aliases:
+          - abhishek
+
+networks:
+  edge:
+    external: true

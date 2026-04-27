@@ -147,7 +147,7 @@ const TerminalPortfolio = () => {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-10 w-10 items-center justify-center border border-stone-900 bg-stone-950 text-white transition hover:-translate-y-0.5 hover:bg-[#0d5c47]"
+            className="inline-flex h-10 w-10 items-center justify-center border border-stone-900 bg-[#dff36f] text-[#16130f] transition hover:-translate-y-0.5 hover:bg-white"
             aria-label="Open LinkedIn profile"
           >
             <Linkedin size={18} />
@@ -180,7 +180,7 @@ const TerminalPortfolio = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 bg-[#16130f] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0d5c47]"
+                className="inline-flex items-center gap-2 border border-stone-900 bg-[#dff36f] px-5 py-3 text-sm font-semibold text-[#16130f] transition hover:-translate-y-0.5 hover:bg-white"
               >
                 <Mail size={17} />
                 Contact

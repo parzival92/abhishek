@@ -1,0 +1,85 @@
+name: Deploy VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-abhishek-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to abhishek.ideova.in
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    env:
+      VPS_HOST: ${{ vars.VPS_HOST }}
+      VPS_USER: ${{ vars.VPS_USER }}
+      VPS_PORT: ${{ vars.VPS_PORT }}
+      VPS_APP_DIR: ${{ vars.VPS_APP_DIR }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate deployment inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${VPS_HOST:?Missing GitHub variable VPS_HOST}"
+          : "${VPS_USER:?Missing GitHub variable VPS_USER}"
+          : "${VPS_SSH_KEY:?Missing GitHub secret VPS_SSH_KEY}"
+          : "${VPS_PORT:=22}"
+          : "${VPS_APP_DIR:=/srv/abhishek}"
+          echo "Deploying to ${VPS_HOST}:${VPS_PORT} in ${VPS_APP_DIR}"
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${VPS_PORT:=22}"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "$VPS_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Ensure target directory exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${VPS_PORT:=22}"
+          : "${VPS_APP_DIR:=/srv/abhishek}"
+          ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" "mkdir -p '$VPS_APP_DIR'"
+
+      - name: Sync repository to VPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${VPS_PORT:=22}"
+          : "${VPS_APP_DIR:=/srv/abhishek}"
+          rsync -az --delete \
+            -e "ssh -p $VPS_PORT" \
+            --exclude '.git/' \
+            --exclude 'node_modules/' \
+            --exclude 'dist/' \
+            --exclude '.env' \
+            ./ "$VPS_USER@$VPS_HOST:$VPS_APP_DIR/"
+
+      - name: Deploy on VPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${VPS_PORT:=22}"
+          : "${VPS_APP_DIR:=/srv/abhishek}"
+          ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" <<EOF_SSH
+          set -euo pipefail
+          docker network create edge >/dev/null 2>&1 || true
+          cd "$VPS_APP_DIR"
+          docker compose up -d --build
+          docker compose ps
+          EOF_SSH
