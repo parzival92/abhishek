@@ -2,6 +2,7 @@ import {
   ArrowUpRight,
   Boxes,
   CloudCog,
+  Download,
   Github,
   GitBranch,
   Linkedin,
@@ -20,6 +21,7 @@ const profile = {
   email: 'abhisheksvps@gmail.com',
   github: 'https://github.com/parzival92',
   linkedin: 'https://linkedin.com/in/abhishek-sharma-790a8b149',
+  resume: '/resume.pdf',
   summary:
     'I design and operate secure cloud platforms where Kubernetes, GitOps, IaC, and observability work together as one delivery system.'
 };
@@ -142,6 +144,9 @@ const TerminalPortfolio = () => {
             <a className="hover:text-[#0d5c47]" href="#contact">
               Contact
             </a>
+            <a className="hover:text-[#0d5c47]" href={profile.resume} target="_blank" rel="noreferrer">
+              Resume
+            </a>
           </div>
           <a
             href={profile.linkedin}
@@ -186,6 +191,15 @@ const TerminalPortfolio = () => {
                 Contact
               </a>
               <a
+                href={profile.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-stone-900 bg-[#dff36f] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:bg-white"
+              >
+                <Download size={17} />
+                Download resume
+              </a>
+              <a
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
@@ -198,19 +212,25 @@ const TerminalPortfolio = () => {
           </div>
 
           <div className="relative min-h-[520px]">
-            <div className="absolute inset-x-0 top-0 mx-auto h-[500px] max-w-[430px] rotate-[-2deg] overflow-hidden border border-stone-900 bg-white shadow-[14px_14px_0_#16130f]">
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute inset-x-0 top-0 mx-auto block h-[500px] max-w-[430px] rotate-[-2deg] overflow-hidden border border-stone-900 bg-white shadow-[14px_14px_0_#16130f] transition hover:rotate-0 hover:shadow-[18px_18px_0_#0d5c47]"
+              aria-label="Open Abhishek Sharma resume"
+            >
               <img
                 src="/resume-preview.png"
                 alt="Resume preview for Abhishek Sharma"
                 className="h-full w-full object-cover object-top"
               />
-            </div>
+            </a>
             <div className="absolute bottom-4 left-0 right-0 mx-auto max-w-sm border border-stone-900 bg-[#dff36f] p-5 shadow-[8px_8px_0_#16130f]">
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-700">
-                Current focus
+                Current resume
               </div>
               <p className="mt-2 font-['Space_Grotesk'] text-2xl font-bold leading-tight">
-                Azure, Kubernetes, GitOps, IaC, observability.
+                Updated with the latest profile photo and platform engineering focus.
               </p>
             </div>
           </div>
@@ -356,6 +376,15 @@ const TerminalPortfolio = () => {
             >
               <Github size={17} />
               GitHub
+            </a>
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border border-stone-600 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white"
+            >
+              <Download size={17} />
+              Resume
             </a>
           </div>
         </div>
